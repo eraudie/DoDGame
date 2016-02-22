@@ -12,6 +12,8 @@ namespace DoDGame
         const int WorldHeight = 10;
         const int MaxBackpackWeight = 30;
 
+
+
         Player player;
         Room[,] world;
 
