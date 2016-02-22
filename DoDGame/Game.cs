@@ -190,6 +190,8 @@ namespace DoDGame
             world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].ItemInRoom = new Item("Sword", 25);
             world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].ItemInRoom = new Item("Potion", 3);
             world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].ItemInRoom = new Item("Knife", 8);
+
+            
         }
 
         private void CreatePlayer()

@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace DoDGame
 {
-    class Weapons : Item
+    class Weapon : Item
     {
-        public  Weapons()
-        {
-            public Weapons()
+        public Weapon(string name, int weight, string type): base(name, weight)
         {
 
+            Type = type;
         }
-            public int MyProperty { get; set; }
-    }
+        public string Type  { get; set; }
     }
 }
