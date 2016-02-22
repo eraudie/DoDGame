@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace DoDGame
 {
+
     static class RandomUtils
     {
+        private static Random random;
+
+        static RandomUtils()
+        {
+            random = new Random();
+        }
+
+
     }
 }

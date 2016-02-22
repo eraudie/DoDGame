@@ -33,7 +33,7 @@ namespace DoDGame
                 FightMonster();
                 player.Health--;
 
-            } while (player.Health > 0 || Monster.MonsterCounter>0);
+            } while (player.Health > 0 || Monster.MonsterCounter > 0);
 
             if (player.Health<= 0)
             {
@@ -48,7 +48,8 @@ namespace DoDGame
 
         private void WinGame()
         {
-            throw new NotImplementedException();
+            Console.Clear();
+            Console.WriteLine("You killed all the monsters! You win! Cool!");
         }
 
         private void FightMonster()

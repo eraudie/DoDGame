@@ -18,7 +18,7 @@ namespace DoDGame
         public override void Fight(Character opponent)
         {
             opponent.Health -= Convert.ToInt32(this.AttackStrength * 0.1);
-            Console.WriteLine($"The monster hits you and you now have {opponent.Health} HP.");
+            Console.WriteLine($"The monster hits you and you now have {opponent.Health} HP."); // FLytta till GAme
         }
         #region Properties
         #endregion
