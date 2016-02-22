@@ -24,8 +24,9 @@ namespace DoDGame
             CreatePlayer();
             do
             {
+
                 Console.Clear();
-                DisplayStats();
+                DisplayStats(); 
                 DisplayWorld();
                 AskForMovement();
                 SearchRoom();
