@@ -11,7 +11,9 @@ namespace DoDGame
         public Monster(string name, int health, int attackStrength, string type): base(name, health, attackStrength)
         {
             Type = type;
+            MonsterCounter++;
         }
+        public static int MonsterCounter { get; set; }
         public string Type { get; set; }
         public override void Fight(Character opponent)
         {

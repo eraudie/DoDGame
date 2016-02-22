@@ -11,8 +11,6 @@ namespace DoDGame
         const int WorldWidth = 20;
         const int WorldHeight = 10;
         const int MaxBackpackWeight = 30;
-        const int Hej = 3;
-
 
         Player player;
         Room[,] world;
@@ -32,9 +30,22 @@ namespace DoDGame
                 FightMonster();
                 player.Health--;
 
-            } while (player.Health > 0);
-            GameOver();
+            } while (player.Health > 0 || Monster.MonsterCounter>0);
+
+            if (player.Health<= 0)
+            {
+                GameOver();
+            }
+            else
+            {
+                WinGame();
+            }
             Console.ReadKey();
+        }
+
+        private void WinGame()
+        {
+            throw new NotImplementedException();
         }
 
         private void FightMonster()
@@ -66,6 +77,7 @@ namespace DoDGame
                         } while (player.Health > 0 && world[player.X, player.Y].MonsterInRoom.Health > 0);
 
                         world[player.X, player.Y].MonsterInRoom = null;
+                        Monster.MonsterCounter--;
                         break;
 
                     case ConsoleKey.N:

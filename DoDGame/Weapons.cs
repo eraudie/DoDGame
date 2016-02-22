@@ -10,7 +10,11 @@ namespace DoDGame
     {
         public  Weapons()
         {
+            public Weapons()
+        {
 
         }
+            public int MyProperty { get; set; }
+    }
     }
 }
