@@ -30,6 +30,7 @@ namespace DoDGame
                 Console.WriteLine("You killed the monster! Hurray! Your health improves and you become stronger!");
                 this.Health += 5;
                 this.AttackStrength += 10;
+
             }
             
         }

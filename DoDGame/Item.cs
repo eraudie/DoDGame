@@ -13,10 +13,5 @@ namespace DoDGame
             Weight = weight;
         }
         public int Weight { get; set; }
-
-        public void PutInBackPack()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
