@@ -12,7 +12,7 @@ namespace DoDGame
         const int MaxBackpackWeight = 1000;
         Player player;
         Room[,] world;
-        #region Methods
+        #region Methods 
         public void Start()
         {
             CreateWorld();
