@@ -89,7 +89,7 @@ namespace DoDGame
                     switch (keyInfo.Key)
                     {
                         case ConsoleKey.Y:
-                            player.BackPack.Add(world[player.X, player.Y].MonsterInRoom);
+                            player.BackPack.Add(world[player.X, player.Y].MonsterInRoom); 
                             world[player.X, player.Y].MonsterInRoom = null;
                             break;
                         case ConsoleKey.N:
