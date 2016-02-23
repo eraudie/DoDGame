@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 
 namespace DoDGame
 {
-    class Item: GameObject
+    class Item: GameObject, ILuggable
     {
         public Item(string name, int weight):base(name)
         {
             Weight = weight;
         }
         public int Weight { get; set; }
+
+        public void PutInBackBack(Character character)
+        {
+
+        }
     }
 }

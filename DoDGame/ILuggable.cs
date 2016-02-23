@@ -8,5 +8,9 @@ namespace DoDGame
 {
     interface ILuggable
     {
+        int Weight { get; set; }
+
+        void PutInBackBack();
+
     }
 }

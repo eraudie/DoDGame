@@ -10,13 +10,13 @@ namespace DoDGame
     {
         public Player(string name, int health, int attackStrength):base(name, health, attackStrength)
         {
-            BackPack = new List<Item>();
+            BackPack = new List<ILuggable>();
         }
 
         #region Properties
         public int X { get; set; } //Om vi inte vill styra vart spelaren ska positioneras första gången, så kan man låta dessa vara default.
         public int Y { get; set; }
-        public List<Item> BackPack { get; set; }
+        public List<ILuggable> BackPack { get; set; }
         #endregion
 
         #region Methods
