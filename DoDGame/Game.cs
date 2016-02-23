@@ -21,7 +21,7 @@ namespace DoDGame
         #region Methods 
         public void Start()
         {
-            
+             
             CreateWorld();
             CreatePlayer();
             do
@@ -33,7 +33,7 @@ namespace DoDGame
                 SearchRoom();
                 FightMonster();
                 player.Health--;
-            } while (player.Health > 0 || Monster.MonsterCounter > 0);
+            } while (player.Health > 0 && Monster.MonsterCounter > 0);
             if (player.Health <= 0)
             {
                 GameOver();

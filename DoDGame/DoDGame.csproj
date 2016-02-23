@@ -58,16 +58,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Characters\Character.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="GameObject\GameObject.cs" />
-    <Compile Include="Items\Item.cs" />
-    <Compile Include="Characters\Monster.cs" />
-    <Compile Include="Characters\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GameObject\Room.cs" />
-    <Compile Include="Items\Weapon.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -85,6 +78,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DungeonsOfDoomLibrary\DungeonsOfDoomLibrary.csproj">
+      <Project>{329e7e21-8d2e-4913-85fc-d7ccf6c8fca8}</Project>
+      <Name>DungeonsOfDoomLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Interfaces\Interfaces.csproj">
       <Project>{0ce4e8a4-9663-4bfc-a08f-948773116173}</Project>
       <Name>Interfaces</Name>

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DeungeonsOfDoom")]
+[assembly: AssemblyTitle("DungeonsOfDoomLibrary")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DeungeonsOfDoom")]
+[assembly: AssemblyProduct("DungeonsOfDoomLibrary")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("63b34d1e-d87a-4106-9e06-2994547ec124")]
+[assembly: Guid("329e7e21-8d2e-4913-85fc-d7ccf6c8fca8")]
 
 // Version information for an assembly consists of the following four values:
 //

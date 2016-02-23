@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RandomUtilities
+namespace Utilities
 {
 
-    static class RandomUtils
+    public static class RandomUtils
     {
         private static Random random;
 
@@ -15,6 +15,8 @@ namespace RandomUtilities
         {
             random = new Random();
         }
+
+
 
 
     }

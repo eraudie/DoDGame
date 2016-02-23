@@ -7,7 +7,7 @@ using Interfaces;
 
 namespace Characters
 {
-    class Monster : Character, ILuggable
+    public class Monster : Character, ILuggable
     {
         public Monster(string name, int health, int attackStrength, int weight) : base(name, health, attackStrength)
         {

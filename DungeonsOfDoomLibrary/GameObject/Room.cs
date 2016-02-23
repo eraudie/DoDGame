@@ -8,11 +8,12 @@ using Items;
 
 namespace GameObjects
 {
-    class Room
+    public class Room
     {
         #region Properties
         public Monster MonsterInRoom { get; set; }
         public Item ItemInRoom { get; set; }
         #endregion
     }
+
 }

@@ -7,7 +7,7 @@ using Interfaces;
 
 namespace Characters
 {
-    sealed class Player : Character
+    sealed public class Player : Character
     {
         public Player(string name, int health, int attackStrength):base(name, health, attackStrength)
         {

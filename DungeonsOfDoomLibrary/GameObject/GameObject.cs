@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameObjects
 {
-    abstract class GameObject
+    abstract public class GameObject
     {
         public GameObject(string name)
         {

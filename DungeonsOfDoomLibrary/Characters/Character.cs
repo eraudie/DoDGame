@@ -7,7 +7,7 @@ using GameObjects;
 
 namespace Characters
 {
-    abstract class Character: GameObject    
+    abstract public class Character: GameObject    
     {
         public Character(string name, int health, int attackStrength, bool isAlive = true) : base(name)
         {

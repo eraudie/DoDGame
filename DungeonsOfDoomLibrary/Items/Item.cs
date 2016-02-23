@@ -8,7 +8,7 @@ using Interfaces;
 
 namespace Items
 {
-    class Item: GameObject, ILuggable
+    public class Item: GameObject, ILuggable
     {
         public Item(string name, int weight):base(name)
         {
