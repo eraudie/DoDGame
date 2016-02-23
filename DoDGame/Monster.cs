@@ -15,6 +15,7 @@ namespace DoDGame
         }
         #region Properties
         public static int MonsterCounter { get; set; }
+
         public int Weight { get; set; }
         #endregion
         public override void Fight(Character opponent)

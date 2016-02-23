@@ -9,6 +9,9 @@ namespace DoDGame
     interface ILuggable
     {
         string Name { get; set; }
-        int Weight { get; set; }
+        int Weight { get; set; } 
+
+
     }
 }
+ 
