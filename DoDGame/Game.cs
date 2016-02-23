@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace DoDGame
 {
     class Game
@@ -11,10 +10,8 @@ namespace DoDGame
         const int WorldWidth = 20;
         const int WorldHeight = 10;
         const int MaxBackpackWeight = 30;
-
         Player player;
         Room[,] world;
-
         #region Methods
         public void Start()
         {
@@ -28,10 +25,15 @@ namespace DoDGame
                 AskForMovement();
                 SearchRoom();
                 FightMonster();
+
+                if (Monster.MonsterCounter <= 0)
+                {
+                    WinGame();
+                    Console.ReadKey();
+                }
+
                 player.Health--;
-
             } while (player.Health > 0 || Monster.MonsterCounter > 0);
-
             if (player.Health<= 0)
             {
                 GameOver();
@@ -42,13 +44,11 @@ namespace DoDGame
             }
             Console.ReadKey();
         }
-
         private void WinGame()
         {
             Console.Clear();
             Console.WriteLine("You killed all the monsters! You win! Cool!");
         }
-
         private void FightMonster()
         {
             if (world[player.X, player.Y].MonsterInRoom != null)
@@ -63,7 +63,6 @@ namespace DoDGame
                 Console.WriteLine();
                 Console.WriteLine("Do you want to fight it? [Y]/[N]");
                 ConsoleKeyInfo keyInfo = Console.ReadKey();
-
                 switch (keyInfo.Key)
                 {
                     case ConsoleKey.Y :
@@ -76,11 +75,10 @@ namespace DoDGame
                             }
                             Console.ReadKey();
                         } while (player.Health > 0 && world[player.X, player.Y].MonsterInRoom.Health > 0);
-
                         world[player.X, player.Y].MonsterInRoom = null;
                         Monster.MonsterCounter--;
-                        break;
 
+                        break;
                     case ConsoleKey.N:
                         player.Health -=5;
                         Console.WriteLine("You lose 5 HP, but get away safely.");
@@ -105,7 +103,6 @@ namespace DoDGame
                         player.AttackStrength += 25;
                     else if (world[player.X, player.Y].ItemInRoom.Name == "Potion")
                         player.Health += 15;
-
                     world[player.X, player.Y].ItemInRoom = null;
                 }
                 else
@@ -118,7 +115,6 @@ namespace DoDGame
                 }
             }
         }
-        
         private void DisplayStats()
         {
             Console.WriteLine($"Name: {player.Name}");
@@ -132,15 +128,12 @@ namespace DoDGame
             }
             Console.WriteLine();
         }
-
         private void AskForMovement()
         {
             Console.WriteLine("Move!");
             ConsoleKeyInfo keyInfo = Console.ReadKey();
-
             int x = player.X;
             int y = player.Y;
-
             switch (keyInfo.Key)
             {
                 case ConsoleKey.RightArrow: x++; break;
@@ -148,7 +141,6 @@ namespace DoDGame
                 case ConsoleKey.UpArrow: y--; break;
                 case ConsoleKey.DownArrow: y++; break;
             }
-
             //Check: Within gameboard?
             if (x >= 0 && x < WorldWidth && y >= 0 && y < WorldHeight)
             {
@@ -156,17 +148,14 @@ namespace DoDGame
                 player.Y = y;
             }
         }
-       
         private void GameOver()
         {
             Console.Clear();
             Console.WriteLine("Game over :CCCCC");
         }
-
         private void CreateWorld()
         {
             Console.WriteLine("Creating world");
-
             world = new Room[WorldWidth, WorldHeight];
             for (int y = 0; y < WorldHeight; y++)
             {
@@ -178,28 +167,23 @@ namespace DoDGame
             }
             PlaceItemsAndMonsters();
         }
-        
         private void PlaceItemsAndMonsters()
         {
             Random random = new Random();
             Random randomHealth = new Random();
             Random randomAttackStrength = new Random();
-            world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].MonsterInRoom = new Monster("Monster", randomHealth.Next(10, 70), randomAttackStrength.Next(30, 80), "Ogre");
-            world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].MonsterInRoom = new Monster("Monster", randomHealth.Next(10, 70), randomAttackStrength.Next(30, 80), "Ogre");
-            world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].MonsterInRoom = new Monster("Monster", randomHealth.Next(10, 70), randomAttackStrength.Next(30, 80), "Gremlin");
-            world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].MonsterInRoom = new Monster("Monster", randomHealth.Next(10, 70), randomAttackStrength.Next(30, 80), "Gremlin");
+            world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].MonsterInRoom = new Monster("Monster", randomHealth.Next(10, 70), randomAttackStrength.Next(30, 80), 10, "Ogre");
+            world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].MonsterInRoom = new Monster("Monster", randomHealth.Next(10, 70), randomAttackStrength.Next(30, 80), 10, "Ogre");
+            world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].MonsterInRoom = new Monster("Monster", randomHealth.Next(10, 70), randomAttackStrength.Next(30, 80), 2, "Gremlin");
+            world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].MonsterInRoom = new Monster("Monster", randomHealth.Next(10, 70), randomAttackStrength.Next(30, 80), 2, "Gremlin");
             world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].ItemInRoom = new Item("Sword", 25);
             world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].ItemInRoom = new Item("Potion", 3);
             world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].ItemInRoom = new Item("Knife", 8);
-
-            
         }
-
         private void CreatePlayer()
         {
             player = new Player("Player", 100, 20);
         }
-
         private void DisplayWorld()
         {
             for (int y = 0; y < WorldHeight; y++)
