@@ -16,15 +16,15 @@ namespace DoDGame
         public static int MonsterCounter { get; set; }
         public string Type { get; set; }
         public int Weight { get; set; }
-        public bool IsAlive { get; set; }
-
         #endregion
         public override void Fight(Character opponent)
         {
             opponent.Health -= Convert.ToInt32(this.AttackStrength * 0.1);
             Console.WriteLine($"The monster hits you and you now have {opponent.Health} HP."); // FLytta till GAme
         }
-
-
+        public void PutInBackPack()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

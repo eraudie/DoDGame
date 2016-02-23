@@ -14,9 +14,9 @@ namespace DoDGame
         }
         public int Weight { get; set; }
 
-        public void PutInBackBack(Character character)
+        public void PutInBackPack()
         {
-
+            throw new NotImplementedException();
         }
     }
 }

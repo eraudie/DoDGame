@@ -25,13 +25,6 @@ namespace DoDGame
                 AskForMovement();
                 SearchRoom();
                 FightMonster();
-
-                if (Monster.MonsterCounter <= 0)
-                {
-                    WinGame();
-                    Console.ReadKey();
-                }
-
                 player.Health--;
             } while (player.Health > 0 || Monster.MonsterCounter > 0);
             if (player.Health<= 0)
@@ -77,7 +70,6 @@ namespace DoDGame
                         } while (player.Health > 0 && world[player.X, player.Y].MonsterInRoom.Health > 0);
                         world[player.X, player.Y].MonsterInRoom = null;
                         Monster.MonsterCounter--;
-
                         break;
                     case ConsoleKey.N:
                         player.Health -=5;
@@ -172,10 +164,10 @@ namespace DoDGame
             Random random = new Random();
             Random randomHealth = new Random();
             Random randomAttackStrength = new Random();
-            world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].MonsterInRoom = new Monster("Monster", randomHealth.Next(10, 70), randomAttackStrength.Next(30, 80), 10, "Ogre");
-            world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].MonsterInRoom = new Monster("Monster", randomHealth.Next(10, 70), randomAttackStrength.Next(30, 80), 10, "Ogre");
-            world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].MonsterInRoom = new Monster("Monster", randomHealth.Next(10, 70), randomAttackStrength.Next(30, 80), 2, "Gremlin");
-            world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].MonsterInRoom = new Monster("Monster", randomHealth.Next(10, 70), randomAttackStrength.Next(30, 80), 2, "Gremlin");
+            world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].MonsterInRoom = new Monster("Monster", randomHealth.Next(10, 70), randomAttackStrength.Next(30, 80), "Ogre");
+            world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].MonsterInRoom = new Monster("Monster", randomHealth.Next(10, 70), randomAttackStrength.Next(30, 80), "Ogre");
+            world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].MonsterInRoom = new Monster("Monster", randomHealth.Next(10, 70), randomAttackStrength.Next(30, 80), "Gremlin");
+            world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].MonsterInRoom = new Monster("Monster", randomHealth.Next(10, 70), randomAttackStrength.Next(30, 80), "Gremlin");
             world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].ItemInRoom = new Item("Sword", 25);
             world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].ItemInRoom = new Item("Potion", 3);
             world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].ItemInRoom = new Item("Knife", 8);
