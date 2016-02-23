@@ -43,6 +43,7 @@
     <Compile Include="Characters\Character.cs" />
     <Compile Include="Characters\Monster.cs" />
     <Compile Include="Characters\Player.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="GameObject\GameObject.cs" />
     <Compile Include="GameObject\Room.cs" />
     <Compile Include="Items\Item.cs" />

@@ -11,7 +11,7 @@ using Interfaces;
 
 namespace DoDGame
 {
-    class Game
+    public class Game
     {
         const int WorldWidth = 20;
         const int WorldHeight = 10;
