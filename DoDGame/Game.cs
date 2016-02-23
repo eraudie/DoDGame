@@ -12,8 +12,6 @@ namespace DoDGame
         const int WorldHeight = 10;
         const int MaxBackpackWeight = 30;
 
-
-
         Player player;
         Room[,] world;
 
@@ -21,10 +19,9 @@ namespace DoDGame
         public void Start()
         {
             CreateWorld();
-            CreatePlayer();
+            CreatePlayer(); 
             do
             {
-
                 Console.Clear();
                 DisplayStats(); 
                 DisplayWorld();
