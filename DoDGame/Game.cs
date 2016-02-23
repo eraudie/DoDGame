@@ -9,25 +9,25 @@ namespace DoDGame
     {
         const int WorldWidth = 20;
         const int WorldHeight = 10;
-        const int MaxBackpackWeight = 30;
+        const int MaxBackpackWeight = 1000;
         Player player;
         Room[,] world;
         #region Methods
         public void Start()
         {
             CreateWorld();
-            CreatePlayer(); 
+            CreatePlayer();
             do
             {
                 Console.Clear();
-                DisplayStats(); 
+                DisplayStats();
                 DisplayWorld();
                 AskForMovement();
                 SearchRoom();
                 FightMonster();
                 player.Health--;
             } while (player.Health > 0 || Monster.MonsterCounter > 0);
-            if (player.Health<= 0)
+            if (player.Health <= 0)
             {
                 GameOver();
             }
@@ -46,38 +46,54 @@ namespace DoDGame
         {
             if (world[player.X, player.Y].MonsterInRoom != null)
             {
-                Console.Clear();
-                DisplayStats();
-                DisplayWorld();
-                Console.WriteLine("There is a monster in the room!");
-                Console.WriteLine($"Name: {world[player.X, player.Y].MonsterInRoom.Name}");
-                Console.WriteLine($"Health: {world[player.X, player.Y].MonsterInRoom.Health}");
-                Console.WriteLine($"Attack Strength: {world[player.X, player.Y].MonsterInRoom.AttackStrength}");
-                Console.WriteLine();
-                Console.WriteLine("Do you want to fight it? [Y]/[N]");
-                ConsoleKeyInfo keyInfo = Console.ReadKey();
-                switch (keyInfo.Key)
+                if (world[player.X, player.Y].MonsterInRoom.IsAlive)
                 {
-                    case ConsoleKey.Y :
-                        do
-                        {
-                            player.Fight(world[player.X, player.Y].MonsterInRoom);
-                            if (world[player.X, player.Y].MonsterInRoom.Health > 0)
+                    Console.Clear();
+                    DisplayStats();
+                    DisplayWorld();
+                    Console.WriteLine("There is a monster in the room!");
+                    Console.WriteLine($"Name: {world[player.X, player.Y].MonsterInRoom.Name}");
+                    Console.WriteLine($"Health: {world[player.X, player.Y].MonsterInRoom.Health}");
+                    Console.WriteLine($"Attack Strength: {world[player.X, player.Y].MonsterInRoom.AttackStrength}");
+                    Console.WriteLine();
+                    Console.WriteLine("Do you want to fight it? [Y]/[N]");
+                    ConsoleKeyInfo keyInfo = Console.ReadKey();
+                    switch (keyInfo.Key)
+                    {
+                        case ConsoleKey.Y:
+                            do
                             {
-                                world[player.X, player.Y].MonsterInRoom.Fight(player);
-                            }
+                                player.Fight(world[player.X, player.Y].MonsterInRoom);
+                                if (world[player.X, player.Y].MonsterInRoom.Health > 0)
+                                {
+                                    world[player.X, player.Y].MonsterInRoom.Fight(player);
+                                }
+                                Console.ReadKey();
+                            } while (player.Health > 0 && world[player.X, player.Y].MonsterInRoom.Health > 0);
+                            world[player.X, player.Y].MonsterInRoom.IsAlive = false;
+                            Monster.MonsterCounter--;
+                            break;
+                        case ConsoleKey.N:
+                            player.Health -= 5;
+                            Console.WriteLine("You lose 5 HP, but get away safely.");
                             Console.ReadKey();
-                        } while (player.Health > 0 && world[player.X, player.Y].MonsterInRoom.Health > 0);
-                        world[player.X, player.Y].MonsterInRoom = null;
-                        Monster.MonsterCounter--;
-                        break;
-                    case ConsoleKey.N:
-                        player.Health -=5;
-                        Console.WriteLine("You lose 5 HP, but get away safely.");
-                        Console.ReadKey();
-                        break;
-                    default:
-                        break;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if (!world[player.X, player.Y].MonsterInRoom.IsAlive)
+                {
+                    Console.WriteLine("Do you want to pick up the dead monster? [Y]/[N]");
+                    ConsoleKeyInfo keyInfo = Console.ReadKey();
+                    switch (keyInfo.Key)
+                    {
+                        case ConsoleKey.Y:
+                            player.BackPack.Add(world[player.X, player.Y].MonsterInRoom); break;
+                        case ConsoleKey.N:
+                            break;
+                        default:; break;
+                    }
                 }
             }
         }
@@ -114,7 +130,7 @@ namespace DoDGame
             Console.WriteLine($"Attack Strength: {player.AttackStrength}");
             Console.WriteLine($"Pos: {player.X}:{player.Y}");
             Console.Write($"Backpack: ");
-            foreach (Item i in player.BackPack)
+            foreach (ILuggable i in player.BackPack)
             {
                 Console.Write(i.Name + " ");
             }
@@ -164,10 +180,10 @@ namespace DoDGame
             Random random = new Random();
             Random randomHealth = new Random();
             Random randomAttackStrength = new Random();
-            world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].MonsterInRoom = new Monster("Monster", randomHealth.Next(10, 70), randomAttackStrength.Next(30, 80), "Ogre");
-            world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].MonsterInRoom = new Monster("Monster", randomHealth.Next(10, 70), randomAttackStrength.Next(30, 80), "Ogre");
-            world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].MonsterInRoom = new Monster("Monster", randomHealth.Next(10, 70), randomAttackStrength.Next(30, 80), "Gremlin");
-            world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].MonsterInRoom = new Monster("Monster", randomHealth.Next(10, 70), randomAttackStrength.Next(30, 80), "Gremlin");
+            world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].MonsterInRoom = new Monster("Ogre", randomHealth.Next(10, 70), randomAttackStrength.Next(30, 80), 20);
+            world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].MonsterInRoom = new Monster("Ogre", randomHealth.Next(10, 70), randomAttackStrength.Next(30, 80), 20);
+            world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].MonsterInRoom = new Monster("Gremlin", randomHealth.Next(10, 70), randomAttackStrength.Next(30, 80), 5);
+            world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].MonsterInRoom = new Monster("Gremlin", randomHealth.Next(10, 70), randomAttackStrength.Next(30, 80), 5);
             world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].ItemInRoom = new Item("Sword", 25);
             world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].ItemInRoom = new Item("Potion", 3);
             world[random.Next(0, WorldWidth), random.Next(0, WorldHeight)].ItemInRoom = new Item("Knife", 8);

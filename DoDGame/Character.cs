@@ -8,14 +8,17 @@ namespace DoDGame
 {
     abstract class Character: GameObject    
     {
-        public Character(string name, int health, int attackStrength) : base(name)
+        public Character(string name, int health, int attackStrength, bool isAlive = true) : base(name)
         {
             Health = health;
             AttackStrength = attackStrength;
+            IsAlive = isAlive;
+            
         }
 
         public int Health { get; set; }
         public int AttackStrength { get; set; }
+        public bool IsAlive { get; set; }
 
         public abstract void Fight(Character opponent);
 

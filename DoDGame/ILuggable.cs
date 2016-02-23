@@ -8,7 +8,7 @@ namespace DoDGame
 {
     interface ILuggable
     {
+        string Name { get; set; }
         int Weight { get; set; }
-        void PutInBackPack();
     }
 }
