@@ -21,9 +21,7 @@ namespace DoDGame
         #region Methods 
         public void Start()
         {
-
             
-
             CreateWorld();
             CreatePlayer();
             do
