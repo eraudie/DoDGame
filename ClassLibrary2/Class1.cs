@@ -4,14 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DoDGame
+namespace ClassLibrary2
 {
-    interface ILuggable
+    public class Class1
     {
-        string Name { get; set; }
-        int Weight { get; set; } 
-
-
     }
 }
- 

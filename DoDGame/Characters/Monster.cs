@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-namespace DoDGame
+using Interfaces;
+
+namespace Characters
 {
     class Monster : Character, ILuggable
     {

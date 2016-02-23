@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Characters;
+using Items;
 
-namespace DoDGame
+namespace GameObjects
 {
     class Room
     {
