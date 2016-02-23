@@ -12,3 +12,4 @@ namespace DoDGame
         int Weight { get; set; }
     }
 }
+ 
