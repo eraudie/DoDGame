@@ -13,5 +13,6 @@ namespace DoDGame
             Name = name;
         }
         public string Name { get; set; }
+
     }
 }

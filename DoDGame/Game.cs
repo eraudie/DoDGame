@@ -89,7 +89,9 @@ namespace DoDGame
                     switch (keyInfo.Key)
                     {
                         case ConsoleKey.Y:
-                            player.BackPack.Add(world[player.X, player.Y].MonsterInRoom); break;
+                            player.BackPack.Add(world[player.X, player.Y].MonsterInRoom);
+                            world[player.X, player.Y].MonsterInRoom = null;
+                            break;
                         case ConsoleKey.N:
                             break;
                         default:; break;
@@ -203,7 +205,10 @@ namespace DoDGame
                         Console.Write("*P*");
                     else if (room.MonsterInRoom != null)
                     {
-                        Console.Write(" M ");
+                        if (room.MonsterInRoom.IsAlive)
+                            Console.Write(" M ");
+                        else
+                            Console.Write("dM ");
                     }
                     else if (room.ItemInRoom != null)
                     {
